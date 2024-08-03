@@ -61,6 +61,8 @@ export default function SideBarMUI() {
                                     icon={node.data.icon}
                                     color={node.data.color}
                                     connectors={node.data.connectors}
+                                    form={node.data.form}
+                                    formData={node.data.formData}
                                 />
                             </Grid>
                         ))}

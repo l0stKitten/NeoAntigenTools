@@ -31,6 +31,8 @@ const DnDFlow = () => {
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
     const { screenToFlowPosition } = useReactFlow();
 
+    const [nodesData, setNodesData] = useState([]);
+
     const [selectedNode, setSelectedNode] = useState(null);
 
     const handleNodeClick = (node) => {
@@ -51,15 +53,15 @@ const DnDFlow = () => {
     );
     
     const onReconnect = useCallback(
-    (oldEdge, newConnection) =>
-        setEdges((els) =>
-        reconnectEdge(
-            { ...oldEdge, animated: true },
-            { ...newConnection, animated: true },
-            els
-        )
-        ),
-    []
+        (oldEdge, newConnection) =>
+            setEdges((els) =>
+                reconnectEdge(
+                    { ...oldEdge, animated: true },
+                    { ...newConnection, animated: true },
+                    els
+                )
+            ),
+        []
     );
 
     const onDragOver = useCallback((event) => {
@@ -91,9 +93,18 @@ const DnDFlow = () => {
             };
 
             setNodes((nds) => nds.concat(newNode));
+            setNodesData((nds) => nds.concat(newNode));
         },
         [screenToFlowPosition],
     );
+
+    const handleFormDataChange = (newFormData) => {
+        const newNodeData = [...nodesData]
+        const newNode = newNodeData.find((node) => node.id === selectedNode.id)
+
+        newNode.data.formData = newFormData
+        setNodesData(newNodeData)
+    }
 
     return (
         <div className="dndflow">
@@ -125,6 +136,8 @@ const DnDFlow = () => {
                 open={Boolean(selectedNode)}
                 toolName={selectedNode?.data?.name}
                 onClose={onCloseRightBar}
+                formData={selectedNode?.data?.formData}
+                onFormDataChange={handleFormDataChange}
             />
         </div>
     );

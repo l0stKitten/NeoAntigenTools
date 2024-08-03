@@ -16,15 +16,16 @@ const NodeWrapper = styled(Paper)(({ theme, selected, color }) => ({
 }));
 
 const onDragStart = (event, nodeData) => {
+  //var {form, ...newNodeData} = nodeData
   event.dataTransfer.setData('application/reactflow', JSON.stringify(nodeData));
   event.dataTransfer.effectAllowed = 'move';
 };
 
-const DraggableNode = ({ name, icon, color, connectors }) => (
+const DraggableNode = ({ name, icon, color, connectors, form, formData }) => (
   <NodeWrapper
     color={color}
     variant='outlined'
-    onDragStart={(event) => onDragStart(event, { name, icon, color, connectors })}
+    onDragStart={(event) => onDragStart(event, { name, icon, color, connectors, form, formData })}
     draggable
   >
     <Typography variant="h4">{icon}</Typography>

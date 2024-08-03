@@ -1,10 +1,10 @@
 // CustomNode.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Handle, Position } from 'reactflow';
 import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
-import {Button} from '@mui/material';
 import { styled } from '@mui/system';
+import SimpleForm from './ToolsForms/FastQC';
 
 const NodeWrapper = styled(Paper)(({ theme, selected, color }) => ({
   padding: theme.spacing(2),
@@ -17,8 +17,8 @@ const NodeWrapper = styled(Paper)(({ theme, selected, color }) => ({
   borderWidth: selected ? '2px' : '0px',
 }));
 
-const CustomNode = ({ data, selected}) => {
-  const { name, icon, color, connectors } = data;
+const CustomNode = ({ data, selected }) => {
+  const { name, icon, color, connectors, formData: initialFormData } = data;
 
   return (
     <NodeWrapper

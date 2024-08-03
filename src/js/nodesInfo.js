@@ -23,7 +23,11 @@ export const quality = [
             name: "FastQC",
             icon: '✨',
             color: '#beffa4',
-            connectors: ['default']
+            connectors: ['default'],
+            formData: {
+                firstName: '',
+                lastName: '',
+            },
         },
     },
     {type: 'customNode',
@@ -42,7 +46,11 @@ export const aligment = [
             name: "BWA",
             icon: '🔗',
             color: '#8ff2af',
-            connectors: ['default']
+            connectors: ['default'],
+            formData: {
+                firstName: '',
+                lastName: '',
+            },
         },
     },
     {type: 'customNode',
