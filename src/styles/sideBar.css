@@ -24,8 +24,6 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 1px solid #1a192b; /* Default border color */
-  border-radius: 4px; /* Adjusted for better visual appeal */
   cursor: grab;
   margin-bottom: 10px;
 }
