@@ -48,8 +48,7 @@ export const aligment = [
             color: '#8ff2af',
             connectors: ['default'],
             formData: {
-                firstName: '',
-                lastName: '',
+                threads: '',
             },
         },
     },
