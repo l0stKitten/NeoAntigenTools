@@ -49,13 +49,15 @@ const DnDFlow = () => {
     };
 
     const handleReplaceNode = () => {
-        const newNodes = []
+        var newNodes = []
         
         if (nodeToAdd.data.name == "BWA"){
-            nodes.filter(node => node.data.name !== "Star");
+            newNodes = nodes.filter(node => node.data.name !== "Star");
         }
         if (nodeToAdd.data.name == "Star"){
-            nodes.filter(node => node.data.name !== "BWA");
+            newNodes = nodes.filter(node => node.data.name !== "BWA");
+
+            console.log(newNodes)
         }
         
         setNodes([...newNodes, nodeToAdd]);
