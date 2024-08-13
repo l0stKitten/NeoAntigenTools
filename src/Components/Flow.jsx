@@ -14,6 +14,10 @@ import {
 import CustomNode from './CustomNode';
 import RightBar from './RightBar';
 import AlertDialogSlide from './AlertDialog';
+import { Backdrop } from '@mui/material';
+import CircularProgress from "@mui/material/CircularProgress";
+
+import { toast } from 'react-toastify';
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
@@ -168,6 +172,8 @@ const DnDFlow = () => {
         setNodesData(newNodeData);
     };
 
+    const [loading, setLoading] = useState(false);
+
     return (
         <Fragment>
             <div className="dndflow">
@@ -201,6 +207,7 @@ const DnDFlow = () => {
                     onClose={onCloseRightBar}
                     formData={selectedNode?.data?.formData}
                     onFormDataChange={handleFormDataChange}
+                    setLoading={setLoading}
                 />
             </div>
             <AlertDialogSlide
@@ -211,6 +218,12 @@ const DnDFlow = () => {
                 onConfirm={handleReplaceNode}
                 onCancel={handleCancelNodeAddition}
             />
+            <Backdrop
+                sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={loading}
+            >
+            <CircularProgress color="inherit" />
+            </Backdrop>
         </Fragment>
     );
 };

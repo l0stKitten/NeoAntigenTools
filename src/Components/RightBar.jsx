@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import Divider from '@mui/material/Divider';
@@ -8,11 +7,12 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import SimpleForm from './ToolsForms/FastQC';
 import SimpleFormBWA from './ToolsForms/BWA';
+import SimpleFormSTAR from './ToolsForms/STAR';
 
 const drawerWidth = 300;
 const minDrawer = 120;
 
-export default function RightBar({ open, toolName, onClose, formData, onFormDataChange }) {
+export default function RightBar({ open, toolName, onClose, formData, onFormDataChange, setLoading}) {
     return (
         <Drawer
             sx={{
@@ -46,6 +46,7 @@ export default function RightBar({ open, toolName, onClose, formData, onFormData
             <Divider />
             {toolName === "FastQC" && <SimpleForm formData={formData} onFormDataChange={onFormDataChange} />}
             {toolName === "BWA" && <SimpleFormBWA formData={formData} onFormDataChange={onFormDataChange} />}
+            {toolName === "Star" && <SimpleFormSTAR formData={formData} onFormDataChange={onFormDataChange} setLoading={setLoading}/>}
         </Drawer>
     );
 }

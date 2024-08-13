@@ -4,6 +4,8 @@ import Flow from './Components/Flow';
 import SideBarMUI from './Components/SideBarMUI';
 import Box from '@mui/material/Box';
 import CustomScrollbarStyles from './styles/CustomScrollBar';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     return (
@@ -19,6 +21,7 @@ function App() {
                     <Flow></Flow>
                 </Box>
             </Box>
+            <ToastContainer />
         </Fragment>
     );
 }

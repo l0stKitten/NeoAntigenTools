@@ -1,16 +1,21 @@
 // SimpleForm.jsx
 import React from 'react';
-import { TextField, Box, Button } from '@mui/material';
+import { TextField, Box, Button, Divider } from '@mui/material';
 
 const SimpleFormBWA = ({ formData, onFormDataChange}) => {    
+
     const handleChange = (e) => {
         const { name, value } = e.target;
     
         onFormDataChange({
             ...formData,
             [name]: value
-          })
-      };
+        })
+    };
+
+    const submit = () => {
+        console.log("submited")
+    }
     
     return (
         <Box 
@@ -28,6 +33,7 @@ const SimpleFormBWA = ({ formData, onFormDataChange}) => {
 
             <Button
                 variant="contained"
+                onClick={submit}
             >
                 Procesar
             </Button>

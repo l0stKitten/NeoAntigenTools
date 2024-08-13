@@ -57,7 +57,11 @@ export const aligment = [
             name: "Star",
             icon: '🔗',
             color: '#8ff2af',
-            connectors: ['default']
+            connectors: ['default'],
+            formData: {
+                threads: '',
+                star_options: '',
+            },
         },
     },
 ]
